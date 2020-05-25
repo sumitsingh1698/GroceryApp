@@ -1,5 +1,7 @@
-import 'package:GroceryApp/src/services/authservice.dart';
+import 'package:GroceryApp/src/bloc/authentication_bloc/authentication_bloc.dart';
+import 'package:GroceryApp/src/bloc/authentication_bloc/authentication_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -12,10 +14,13 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       appBar: AppBar(title: Text("Landing Page")),
       body: Container(
-        child: RaisedButton(onPressed: (){
-          AuthService().signout();
-        },child:Text("SignOut"))
-      ),
+          child: RaisedButton(
+              onPressed: () {
+                setState(() {
+                  BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+                });
+              },
+              child: Text("SignOut"))),
     );
   }
 }
