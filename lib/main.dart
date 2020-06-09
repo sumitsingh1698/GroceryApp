@@ -3,6 +3,7 @@ import 'package:GroceryApp/authenticate/authentication_state.dart';
 import 'package:GroceryApp/data/user_repository.dart';
 import 'package:GroceryApp/home/home_page.dart';
 import 'package:GroceryApp/login/login_page.dart';
+import 'package:GroceryApp/splash/internet_not_connect_page.dart';
 import 'package:GroceryApp/splash/splash_page.dart';
 import 'package:GroceryApp/userdetail/set_user_detail.dart';
 import 'package:flutter/material.dart';
@@ -64,12 +65,13 @@ class _MyAppState extends State<MyApp> {
         // This is the theme of your application.
         //
         
-        primarySwatch: Colors.orange,
+        primarySwatch: createMaterialColor(Color(0xFF00bef2)),
       ),
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is Uninitialized) {
             return SplashPage();
+
           } else if (state is Unauthenticated) {
             return LoginPage(
               userRepository: userRepository,
@@ -79,6 +81,8 @@ class _MyAppState extends State<MyApp> {
             return HomePage(userRepository,);
           }else if(state is SetUserDetailState){
             return UserDetails(userRepository: userRepository,);
+          }else if(state is InternetNotConnect){
+            return InternetNotConnectPage();
           }   
           else {
             return SplashPage();
@@ -86,5 +90,26 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
+    
   }
+
+  MaterialColor createMaterialColor(Color color) {
+  List strengths = <double>[.05];
+  Map swatch = <int, Color>{};
+  final int r = color.red, g = color.green, b = color.blue;
+
+  for (int i = 1; i < 10; i++) {
+    strengths.add(0.1 * i);
+  }
+  strengths.forEach((strength) {
+    final double ds = 0.5 - strength;
+    swatch[(strength * 1000).round()] = Color.fromRGBO(
+      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+      1,
+    );
+  });
+  return MaterialColor(color.value, swatch);
+}
 }

@@ -22,7 +22,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> mapEventToState(
     LoginEvent event,
   ) async* {
-    if (event is SendOtpEvent) {
+    if (event is AppStartEvent) {
+      yield InitialLoginState();
+    } else if (event is SendOtpEvent) {
       yield LoadingState();
 
       subscription = sendOtp(event.phoNo).listen((event) {
@@ -31,9 +33,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } else if (event is OtpSendEvent) {
       yield OtpSentState();
     } else if (event is LoginCompleteEvent) {
-
       yield LoginCompleteState(event.firebaseUser);
-
     } else if (event is LoginExceptionEvent) {
       print(event.message);
       yield ExceptionState(message: event.message);
@@ -73,7 +73,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginEvent> sendOtp(String phoNo) async* {
-
     StreamController<LoginEvent> eventStream = StreamController();
 
     final PhoneVerificationCompleted = (AuthCredential authCredential) {
@@ -83,7 +82,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }).then((user) {
         print(user);
         print("mobile app");
-        if(user != null){
+        if (user != null) {
           eventStream.add(LoginCompleteEvent(user));
         }
         eventStream.close();

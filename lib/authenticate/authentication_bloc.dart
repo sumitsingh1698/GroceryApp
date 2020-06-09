@@ -17,12 +17,20 @@ class AuthenticationBloc
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      final bool hasToken = await userRepository.getUser() != null;
+      yield Loading();
+      if (await userRepository.checkConnectivity()) {
 
-      if (hasToken) {
-        yield Authenticated();
-      } else {
-        yield Unauthenticated();
+        final bool hasToken = await userRepository.getUser() != null;
+
+        if (hasToken) {
+          
+           await userRepository.getDetails();
+          yield Authenticated();
+        } else {
+          yield Unauthenticated();
+        }
+      }else{
+        yield InternetNotConnect();
       }
     }
 
@@ -30,16 +38,14 @@ class AuthenticationBloc
       yield Loading();
       await userRepository.getDetails();
       print('here for detail');
-      if(userRepository.userDetail.getEmail == ""){
+      if (userRepository.userDetail.getEmail == "") {
         yield SetUserDetailState();
-      }else{
-         yield Authenticated();
+      } else {
+        yield Authenticated();
       }
-      
     }
 
     if (event is LoggedOut) {
-      
       yield Loading();
       await userRepository.signOut();
       yield Unauthenticated();

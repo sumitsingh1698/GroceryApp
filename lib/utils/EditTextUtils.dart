@@ -9,24 +9,26 @@ class EditTextUtils {
       bool validation,
       TextEditingController controller,
       TextInputType keyboardType = TextInputType.text,
-      String validationErrorMsg,}) {
+      String validationErrorMsg,
+      Color color,
+      }) {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(
           prefixIcon: Icon(icon),
-          prefixStyle: TextStyle(color: Colors.orange),
+          prefixStyle: TextStyle(color: color),
           fillColor: Colors.white.withOpacity(0.6),
           filled: true,
           isDense: true,
-          labelStyle: TextStyle(color: Colors.orange),
-          focusColor: Colors.orange,
+          labelStyle: TextStyle(color: color),
+          focusColor: color,
           border: new OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               const Radius.circular(8.0),
             ),
             borderSide: new BorderSide(
-              color: Colors.orange,
+              color: color,
               width: 1.0,
             ),
           ),
@@ -35,7 +37,7 @@ class EditTextUtils {
               const Radius.circular(8.0),
             ),
             borderSide: new BorderSide(
-              color: Colors.orange,
+              color: color,
               width: 1.0,
             ),
           ),
@@ -44,7 +46,7 @@ class EditTextUtils {
               const Radius.circular(8.0),
             ),
             borderSide: new BorderSide(
-              color: Colors.orange,
+              color: color,
               width: 1.0,
             ),
           ),

@@ -24,7 +24,9 @@ class UserDetailBloc extends Bloc<UserDetailEvent, UserDetailState> {
       await _userRepository.updatePersonalDetails(event.email,event.fname,event.lname);
       yield UpdateAddressState();
      }if(event is AddressDetailUpdateEvent){
-       
+      yield LoadingState();
+      await _userRepository.updateAddressDetails(event.hno, event.floor, event.address, event.landmark,event.pincode);
+      yield SuccessSubmitedState();
      }
   }
 }

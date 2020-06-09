@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:GroceryApp/models/user_detail.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:connectivity/connectivity.dart';
 import "package:firebase_auth/firebase_auth.dart";
 
 class UserRepository {
@@ -53,10 +54,19 @@ class UserRepository {
     );
     await callable.call().then((value) {
       print("data ${value.data['data']['values']}");
+      userDetail.setUid = value.data['data']['id'];
       userDetail.setEmail = value.data['data']['values']['email'];
       userDetail.setFname = value.data['data']['values']['fname'];
       userDetail.setLname = value.data['data']['values']['lname'];
       userDetail.setCart = value.data['data']['values']['cart'];
+      userDetail.setCreateDate = value.data['data']['values']['createdDate']['date'];
+
+      userDetail.setHno = value.data['data']['values']['address']['hno'];
+      userDetail.setFloor = value.data['data']['values']['address']['floor'];
+      userDetail.setAddress = value.data['data']['values']['address']['address'];
+      userDetail.setLandmark = value.data['data']['values']['address']['landmark'];
+      userDetail.setPincode = value.data['data']['values']['address']['pincode'];
+
     });
   }
 
@@ -73,4 +83,29 @@ class UserRepository {
     );
     print("update persnal success : ${result.data}");
   }
+   Future<void> updateAddressDetails(String hno,String floor,String address,String landmark, String pincode) async {
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'upadateUserAddressDetail',
+    );
+    final HttpsCallableResult result = await callable.call(
+      <String, dynamic>{
+      'hno' : hno,
+      'floor' : floor,
+      'address' : address,
+      'landmark' : landmark,
+      'pincode' : pincode,
+       },
+    );
+    print("update address success : ${result.data}");
+  }
+  Future<bool> checkConnectivity() async{
+    var connectivityResult = await (Connectivity().checkConnectivity());
+if (connectivityResult == ConnectivityResult.mobile) {
+   return true;
+ } else if (connectivityResult == ConnectivityResult.wifi) {
+  return true;
+ }
+ return false;
+ }
+
 }

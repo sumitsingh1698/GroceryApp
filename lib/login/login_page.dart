@@ -51,9 +51,9 @@ class _LoginFormState extends State<LoginForm> {
         if (loginState is ExceptionState || loginState is OtpExceptionState) {
           String message;
           if (loginState is ExceptionState) {
-            message = loginState.message;
+            message = "Error Occured Try Again!!  ";
           } else if (loginState is OtpExceptionState) {
-            message = loginState.message;
+            message = "OTP Error Occured Try Again!!  ";
           }
           Scaffold.of(context)
             ..hideCurrentSnackBar()
@@ -75,21 +75,16 @@ class _LoginFormState extends State<LoginForm> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    color:  Color.fromRGBO(255, 158, 249, 2),
+                    color: Theme.of(context).primaryColor,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Header(),
                         Container(
-                          child: ConstrainedBox(
-                            constraints:
-                                BoxConstraints.tight(Size.fromHeight(180)),
-                            child: getViewAsPerState(state),
-                          ),
+                          child: getViewAsPerState(state),
                           decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(62))),
+                              ),
                         )
                       ],
                     ),
@@ -115,7 +110,7 @@ class _LoginFormState extends State<LoginForm> {
       return LoadingIndicator();
 
     } else if (state is LoginCompleteState) {
-
+       
       BlocProvider.of<AuthenticationBloc>(context)
           .add(LoggedIn());
 
@@ -136,15 +131,15 @@ class Header extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Container(
-        margin: EdgeInsets.all(32),
+        margin: EdgeInsets.all(25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Getting Started to Grocery",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                "Welcome To Grocery App",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,color: Colors.white),
               ),
             ),
           ],
@@ -157,7 +152,10 @@ class Header extends StatelessWidget {
 class LoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
-        child: CircularProgressIndicator(),
+        child: Padding(
+          padding: const EdgeInsets.all(50.0),
+          child: CircularProgressIndicator(),
+        ),
       );
 }
 
@@ -169,7 +167,7 @@ class NumberInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.only(top: 38, bottom: 16.0, left: 16.0, right: 16.0),
+          const EdgeInsets.only(top: 25, bottom: 10.0, left: 16.0, right: 16.0),
       child: Column(
         children: <Widget>[
           Form(
@@ -180,22 +178,23 @@ class NumberInput extends StatelessWidget {
                 controller: _phoneTextController,
                 keyboardType: TextInputType.number,
                 icon: Icons.phone,
+                color: Theme.of(context).primaryColor,
                 validator: (value) {
                   return validateMobile(value);
                 }),
           ),
           Padding(
-            padding: const EdgeInsets.all(0.0),
+            padding: const EdgeInsets.only(top:10.0),
             child: RaisedButton(
+              color: Theme.of(context).primaryColorDark,
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                   BlocProvider.of<LoginBloc>(context).add(SendOtpEvent(
                       phoNo: "+91" + _phoneTextController.value.text));
                 }
               },
-              color: Colors.orange,
               child: Text(
-                "Submit",
+                "Submit",   
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -218,35 +217,32 @@ class OtpInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return ConstrainedBox(
-      child: Padding(
-        padding: const EdgeInsets.only(
-            top: 48, bottom: 16.0, left: 16.0, right: 16.0),
-        child: Column(
-          children: <Widget>[
-            PinEntryTextField(
-                fields: 6,
-                onSubmit: (String pin) {
-                  BlocProvider.of<LoginBloc>(context)
-                      .add(VerifyOtpEvent(otp: pin));
-                }),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
-                onPressed: () {
-                  BlocProvider.of<LoginBloc>(context).add(AppStartEvent());
-                },
-                color: Colors.orange,
-                child: Text(
-                  "Back",
-                  style: TextStyle(color: Colors.white),
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(
+          top: 25, bottom: 10.0, left: 16.0, right: 16.0),
+      child: Column(
+        children: <Widget>[
+          PinEntryTextField(
+              fields: 6,
+              onSubmit: (String pin) {
+                BlocProvider.of<LoginBloc>(context)
+                    .add(VerifyOtpEvent(otp: pin));
+              }),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RaisedButton(
+              onPressed: () {
+                BlocProvider.of<LoginBloc>(context).add(AppStartEvent());
+              },
+              color: Theme.of(context).primaryColorDark,
+              child: Text(
+                "Back",
+                style: TextStyle(color: Colors.white),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
-      constraints: BoxConstraints.tight(Size.fromHeight(280)),
     );
   }
 }
