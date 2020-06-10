@@ -6,6 +6,7 @@ class UserDetail {
  var _lname;
  var _email;
  var _floor;
+ var _streetNo;
  var _hno;
  var _address;
  var _landmark;
@@ -20,6 +21,7 @@ class UserDetail {
    this._cart = [];
    this._hno = "";
    this._floor = "";
+   this._streetNo = "";
    this._address = "";
    this._landmark = "";
    this._pincode = "";
@@ -35,6 +37,7 @@ class UserDetail {
   List<dynamic> get getCart => _cart;
   String get getHno => _hno;
   String get getFloor => _floor;
+  String get getStreetNo => _streetNo;
   String get getAddress => _address;
   String get getLandmark => _landmark;
   String get getPincode => _pincode;
@@ -63,6 +66,9 @@ class UserDetail {
   }
   set setFloor(String value) {
     _floor = value;
+  }
+  set setStreetNo(String value){
+    _streetNo = value;
   }
   set setAddress(String value) {
     _address = value;

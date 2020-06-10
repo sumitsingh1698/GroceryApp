@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:GroceryApp/models/user_detail.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -8,6 +7,7 @@ import "package:firebase_auth/firebase_auth.dart";
 class UserRepository {
   final FirebaseAuth _firebaseAuth;
   final UserDetail userDetail;
+  String phoneNumber;
 
   UserRepository({FirebaseAuth firebaseAuth, UserDetail userDetail})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
@@ -63,6 +63,7 @@ class UserRepository {
 
       userDetail.setHno = value.data['data']['values']['address']['hno'];
       userDetail.setFloor = value.data['data']['values']['address']['floor'];
+      userDetail.setStreetNo = value.data['data']['values']['address']['streetNo'];
       userDetail.setAddress = value.data['data']['values']['address']['address'];
       userDetail.setLandmark = value.data['data']['values']['address']['landmark'];
       userDetail.setPincode = value.data['data']['values']['address']['pincode'];
@@ -83,7 +84,7 @@ class UserRepository {
     );
     print("update persnal success : ${result.data}");
   }
-   Future<void> updateAddressDetails(String hno,String floor,String address,String landmark, String pincode) async {
+   Future<void> updateAddressDetails(String hno,String floor,String streetNo,String address,String landmark, String pincode) async {
     final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
       functionName: 'upadateUserAddressDetail',
     );
@@ -91,6 +92,7 @@ class UserRepository {
       <String, dynamic>{
       'hno' : hno,
       'floor' : floor,
+      'streetNo' : streetNo,
       'address' : address,
       'landmark' : landmark,
       'pincode' : pincode,

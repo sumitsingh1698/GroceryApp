@@ -16,7 +16,6 @@ class SendOtpEvent extends LoginEvent {
 class AppStartEvent extends LoginEvent {}
 
 class VerifyOtpEvent extends LoginEvent {
-  
   String otp;
 
   VerifyOtpEvent({this.otp});
@@ -36,3 +35,5 @@ class LoginExceptionEvent extends LoginEvent {
 
   LoginExceptionEvent(this.message);
 }
+
+class CheckInternet extends LoginEvent {}

@@ -24,10 +24,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async* {
     if (event is AppStartEvent) {
       yield InitialLoginState();
-    } else if (event is SendOtpEvent) {
+    }
+    
+    else if (event is SendOtpEvent) {
       yield LoadingState();
-
-      subscription = sendOtp(event.phoNo).listen((event) {
+      if(_userRepository.phoneNumber == null){
+        _userRepository.phoneNumber = event.phoNo;
+      }
+      subscription = sendOtp(_userRepository.phoneNumber).listen((event) {
         add(event);
       });
     } else if (event is OtpSendEvent) {
@@ -50,6 +54,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       } catch (e) {
         yield OtpExceptionState(message: "Invalid otp!");
         print(e);
+      }
+    }else if(event is CheckInternet){
+      if(await _userRepository.checkConnectivity()){
+       yield InitialLoginState();
+      }else{
+       yield InternetNotConnectState();
       }
     }
   }

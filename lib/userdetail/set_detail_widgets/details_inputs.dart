@@ -11,70 +11,72 @@ class DetailsInputs extends StatelessWidget {
   final _lnameTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              EditTextUtils().getCustomEditTextArea(
-                  labelValue: "Enter First Name",
-                  hintValue: "jhon",
-                  controller: _fnameTextController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.title,
-                  color: Theme.of(context).primaryColor,
-                  validator: (value) {   
-                    return validateNames(value);
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              EditTextUtils().getCustomEditTextArea(
-                  labelValue: "Enter Last Name",
-                  hintValue: "singh",
-                  controller: _lnameTextController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.person,
-                  color: Theme.of(context).primaryColor,
-                  validator: (value) {
-                    return validateNames(value);
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              EditTextUtils().getCustomEditTextArea(
-                  labelValue: "Enter Email",
-                  hintValue: "abcd124@gmail.com",
-                  controller: _emailTextController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.email,
-                  color: Theme.of(context).primaryColor,
-                  validator: (value) {
-                   return validateEmail(value);
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              
-              RaisedButton(
-                color: Theme.of(context).primaryColorDark,
-                onPressed: () {
-                 
-                    if(_formKey.currentState.validate()){
-                    print("confirmed form");
-                        BlocProvider.of<UserDetailBloc>(context).add(PersonalDetailUpdateEvent(
-                          email: _emailTextController.value.text,
-                          fname: _fnameTextController.value.text,
-                          lname: _lnameTextController.value.text));
-                    }
-                      
-                },
+    return SingleChildScrollView(
+          child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                EditTextUtils().getCustomEditTextArea(
+                    labelValue: "Enter First Name",
+                    hintValue: "jhon",
+                    controller: _fnameTextController,
+                    keyboardType: TextInputType.text,
+                    icon: Icons.title,
+                    color: Theme.of(context).primaryColor,
+                    validator: (value) {   
+                      return validateNames(value);
+                    }),
+                SizedBox(
+                  height: 20,
+                ),
+                EditTextUtils().getCustomEditTextArea(
+                    labelValue: "Enter Last Name",
+                    hintValue: "singh",
+                    controller: _lnameTextController,
+                    keyboardType: TextInputType.text,
+                    icon: Icons.person,
+                    color: Theme.of(context).primaryColor,
+                    validator: (value) {
+                      return validateNames(value);
+                    }),
+                SizedBox(
+                  height: 20,
+                ),
+                EditTextUtils().getCustomEditTextArea(
+                    labelValue: "Enter Email",
+                    hintValue: "abcd124@gmail.com",
+                    controller: _emailTextController,
+                    keyboardType: TextInputType.emailAddress,
+                    icon: Icons.email,
+                    color: Theme.of(context).primaryColor,
+                    validator: (value) {
+                     return validateEmail(value);
+                    }),
+                SizedBox(
+                  height: 20,
+                ),
                 
-                child: Text( "Next",style: TextStyle(color:Colors.white),),
-              )
-            ]),
+                RaisedButton(
+                  color: Theme.of(context).primaryColorDark,
+                  onPressed: () {
+                   
+                      if(_formKey.currentState.validate()){
+                      print("confirmed form");
+                          BlocProvider.of<UserDetailBloc>(context).add(PersonalDetailUpdateEvent(
+                            email: _emailTextController.value.text,
+                            fname: _fnameTextController.value.text,
+                            lname: _lnameTextController.value.text));
+                      }
+                        
+                  },
+                  
+                  child: Text( "Next",style: TextStyle(color:Colors.white),),
+                )
+              ]),
+        ),
       ),
     );
   }

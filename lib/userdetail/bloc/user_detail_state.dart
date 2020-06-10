@@ -20,3 +20,9 @@ class ExceptionState extends UserDetailState {
 class UpdateAddressState extends UserDetailState{}
 
 class LoadingState extends UserDetailState {}
+
+class InternetNotConnectState extends UserDetailState{
+  @override
+  List<Object> get props => [];
+
+}

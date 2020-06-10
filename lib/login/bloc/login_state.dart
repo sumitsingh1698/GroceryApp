@@ -57,3 +57,10 @@ class OtpExceptionState extends LoginState {
   // TODO: implement props
   List<Object> get props => [message];
 }
+
+class InternetNotConnectState extends LoginState{
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+
+}
