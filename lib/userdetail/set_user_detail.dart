@@ -87,8 +87,8 @@ class _UserDetailFormState extends State<UserDetailForm> {
                     flex: 1,
                     child: Container(
 
-                      width: double.infinity,
-                      height: double.infinity,
+                        width: double.infinity,
+                        height: double.infinity,
                     color: Theme.of(context).primaryColor,
                     child: Center(child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,8 +1,7 @@
 import 'package:GroceryApp/authenticate/authentication_bloc.dart';
 import 'package:GroceryApp/authenticate/authentication_event.dart';
 import 'package:GroceryApp/data/user_repository.dart';
-import 'package:GroceryApp/login/bloc/login_bloc.dart';
-import 'package:GroceryApp/login/bloc/login_event.dart';
+import 'package:GroceryApp/products_insertion/add_product.dart';
 import 'package:GroceryApp/user_account_page/user_account_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,6 +53,14 @@ class HomePage_Drawer extends StatelessWidget {
                       title: new Text("Support & FAQs"),
                       onTap: () {
                         // Navigator.push(context, MaterialPageRoute(builder: (context)=> Help_Screen(toolbarname: 'Help',)));
+                      }),
+                      Divider(),
+                      new ListTile(
+                      leading: Icon(Icons.headset,
+                          color: Theme.of(context).primaryColorDark),
+                      title: new Text("Add Product"),
+                      onTap: () {
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=> AddProductPage(userRepository: _userRepository)));
                       })
                 ],
               ),

@@ -66,22 +66,19 @@ class HomePageThirdSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Orientation orientation = MediaQuery.of(context).orientation;
-    return Container(
-      height: 750,
-      child: GridView.builder(
-        itemCount: photos.length,
-        physics: NeverScrollableScrollPhysics(),
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+    return SliverGrid(
+          gridDelegate: 
+              new SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: orientation == Orientation.portrait ? 3 : 5),
-        itemBuilder: (BuildContext context, int index) {
-          return new GestureDetector(
+          delegate: new SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return new GestureDetector(
               onTap: () {
-              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          WorkInProgressPage()));
-                                 },
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WorkInProgressPage()));
+              },
               child: new Card(
                 margin: EdgeInsets.all(10.0),
                 shape: shapeBorder,
@@ -105,8 +102,7 @@ class HomePageThirdSection extends StatelessWidget {
                           padding: EdgeInsets.only(left: 3.0, bottom: 3.0),
                           alignment: Alignment.bottomLeft,
                           child: new GestureDetector(
-                            onTap: () {
-                                  },
+                            onTap: () {},
                             child: new Text(
                               photos[index].title,
                               style: TextStyle(
@@ -120,11 +116,17 @@ class HomePageThirdSection extends StatelessWidget {
                     ),
                   ),
                 ),
-              ));
-        },
-      ),
-    );
+              )
+              );
+            },
+            childCount: photos.length,
+          ),
+        );
 
+
+
+
+     
     // fourth Section Catagaries
   }
 }
