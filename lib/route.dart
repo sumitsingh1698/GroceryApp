@@ -1,5 +1,5 @@
 import 'package:GroceryApp/data/user_repository.dart';
-import 'package:GroceryApp/home/home_page.dart';
+import 'package:GroceryApp/home_page/homepage.dart';
 import 'package:GroceryApp/login/login_page.dart';
 import 'package:GroceryApp/splash/splash_page.dart';
 import 'package:GroceryApp/userdetail/set_user_detail.dart';

@@ -1,12 +1,18 @@
+import 'dart:async';
+
 import 'package:GroceryApp/authenticate/authentication_bloc.dart';
 import 'package:GroceryApp/authenticate/authentication_event.dart';
 import 'package:GroceryApp/data/user_repository.dart';
+import 'package:GroceryApp/splash/internet_not_connect_page.dart';
 import 'package:GroceryApp/userdetail/bloc/user_bloc.dart';
 import 'package:GroceryApp/userdetail/bloc/user_detail_bloc.dart';
-import 'package:GroceryApp/utils/EditTextUtils.dart';
+import 'package:GroceryApp/userdetail/set_detail_widgets/address_form.dart';
+import 'package:GroceryApp/userdetail/set_detail_widgets/details_inputs.dart';
+import 'package:GroceryApp/userdetail/set_detail_widgets/loading_indicator.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:GroceryApp/login/login_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserDetails extends StatelessWidget {
   final UserRepository userRepository;
@@ -33,10 +39,22 @@ class UserDetailForm extends StatefulWidget {
 
 class _UserDetailFormState extends State<UserDetailForm> {
   UserDetailBloc _userDetailBloc;
+   StreamSubscription<ConnectivityResult> subscription;
   @override
   void initState() {
     _userDetailBloc = BlocProvider.of<UserDetailBloc>(context);
     super.initState();
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+        BlocProvider.of<UserDetailBloc>(context).add(CheckInternet());
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    subscription.cancel();
   }
 
   @override
@@ -62,8 +80,37 @@ class _UserDetailFormState extends State<UserDetailForm> {
       child: BlocBuilder<UserDetailBloc, UserDetailState>(
         builder: (context, state) {
           return Scaffold(
-            body: SingleChildScrollView(
-              child: getViewAsPerState(state),
+            body: Center(
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+
+                        width: double.infinity,
+                        height: double.infinity,
+                    color: Theme.of(context).primaryColor,
+                    child: Center(child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        FaIcon(FontAwesomeIcons.fill,),
+                        SizedBox(width: 10,),
+                         Text("Submit",style: TextStyle(fontSize:35,fontWeight: FontWeight.bold),),
+                         SizedBox(width:20),
+                        FaIcon(FontAwesomeIcons.info,size:40),
+                        Text("nfo ",style: TextStyle(fontSize:34,fontWeight: FontWeight.bold),),
+                      ],
+                    ),),
+                
+                    ),
+                  ),
+                  Expanded(
+                      child: Center(
+                        child: getViewAsPerState(state),
+                      ),
+                      flex: 2)
+                ],
+              ),
             ),
           );
         },
@@ -76,90 +123,16 @@ class _UserDetailFormState extends State<UserDetailForm> {
       return DetailsInputs();
     } else if (state is LoadingState) {
       return LoadingIndicator();
+    } else if (state is UpdateAddressState) {
+      return AddressFrom();
     } else if (state is SuccessSubmitedState) {
       BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
+    }else if(state is InternetNotConnectState){
+      return NoInternet(onclick: (){
+       BlocProvider.of<UserDetailBloc>(context).add(CheckInternet());
+      }, fontsize: 15);
     } else {
-      // return NumberInput();
+       return DetailsInputs();
     }
-  }
-}
-
-class DetailsInputs extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _emailTextController = TextEditingController();
-  final _fnameTextController = TextEditingController();
-  final _lnameTextController = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("Here"),
-              EditTextUtils().getCustomEditTextArea(
-                  labelValue: "Enter First Name",
-                  hintValue: "jhon",
-                  controller: _fnameTextController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.email,
-                  validator: (value) {
-                    if (value.length != 10) {}
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              EditTextUtils().getCustomEditTextArea(
-                  labelValue: "Enter Last Name",
-                  hintValue: "singh",
-                  controller: _lnameTextController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.email,
-                  validator: (value) {
-                    if (value.length != 10) {}
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              EditTextUtils().getCustomEditTextArea(
-                  labelValue: "Enter Email",
-                  hintValue: "abcd124@gmail.com",
-                  controller: _emailTextController,
-                  keyboardType: TextInputType.emailAddress,
-                  icon: Icons.email,
-                  validator: (value) {
-                    if (value.length != 10) {}
-                  }),
-              SizedBox(
-                height: 20,
-              ),
-              RaisedButton(
-                onPressed: () {
-                  BlocProvider.of<UserDetailBloc>(context).add(
-                      PersonalDetailUpdateEvent(
-                          email: _emailTextController.value.text,
-                          fname: _fnameTextController.value.text,
-                          lname: _lnameTextController.value.text));
-                },
-                child: Text("Submit Details"),
-              )
-            ]),
-      ),
-    );
-  }
-}
-
-class LoadingIndicator extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      children: <Widget>[
-        CircularProgressIndicator(backgroundColor: Colors.lightBlueAccent,),
-        Text("Saving....")
-      ],
-    ));
   }
 }

@@ -10,19 +10,34 @@ class AuthenticationBloc
   AuthenticationBloc(this.userRepository);
 
   @override
-  AuthenticationState get initialState => InitialAuthenticationState();
+  AuthenticationState get initialState => Loading();
 
   @override
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      final bool hasToken = await userRepository.getUser() != null;
+      yield Loading();
+      if (await userRepository.checkConnectivity()) {
+        print("check connectivtiy");
+        final bool hasToken = await userRepository.getUser() != null;
 
-      if (hasToken) {
-        yield Authenticated();
-      } else {
-        yield Unauthenticated();
+        if (hasToken) {
+          await userRepository.getDetails();
+          print('here login detail');
+          if (userRepository.userDetail.getEmail == "") {
+            yield SetUserDetailState();
+          } else {
+            yield Authenticated();
+          }
+        } else {
+          yield Unauthenticated();
+        
+         }
+         } 
+         else {
+        print("no Internet is triggered");
+        yield InternetNotConnect();
       }
     }
 
@@ -30,16 +45,14 @@ class AuthenticationBloc
       yield Loading();
       await userRepository.getDetails();
       print('here for detail');
-      if(userRepository.userDetail.getEmail == ""){
+      if (userRepository.userDetail.getEmail == "") {
         yield SetUserDetailState();
-      }else{
-         yield Authenticated();
+      } else {
+        yield Authenticated();
       }
-      
     }
 
     if (event is LoggedOut) {
-      
       yield Loading();
       await userRepository.signOut();
       yield Unauthenticated();

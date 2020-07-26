@@ -1,14 +1,20 @@
+import 'dart:async';
+
 import 'package:GroceryApp/authenticate/authentication_bloc.dart';
 import 'package:GroceryApp/authenticate/bloc.dart';
 import 'package:GroceryApp/data/user_repository.dart';
 import 'package:GroceryApp/login/bloc/login_bloc.dart';
 import 'package:GroceryApp/login/bloc/login_event.dart';
 import 'package:GroceryApp/login/bloc/login_state.dart';
-import 'package:GroceryApp/utils/EditTextUtils.dart';
+import 'package:GroceryApp/login/login_page_widgets/header.dart';
+import 'package:GroceryApp/login/login_page_widgets/loading_indicator.dart';
+import 'package:GroceryApp/splash/internet_not_connect_page.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_entry_text_field/pin_entry_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'login_page_widgets/number_input.dart';
+import 'login_page_widgets/output_input.dart';
 
 class LoginPage extends StatelessWidget {
   final UserRepository userRepository;
@@ -28,7 +34,6 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-
 class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -36,11 +41,23 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   LoginBloc _loginBloc;
+  StreamSubscription<ConnectivityResult> subscription;
 
   @override
   void initState() {
     _loginBloc = BlocProvider.of<LoginBloc>(context);
     super.initState();
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      BlocProvider.of<LoginBloc>(context).add(CheckInternet());
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    subscription.cancel();
   }
 
   @override
@@ -51,9 +68,9 @@ class _LoginFormState extends State<LoginForm> {
         if (loginState is ExceptionState || loginState is OtpExceptionState) {
           String message;
           if (loginState is ExceptionState) {
-            message = loginState.message;
+            message = "Error Occured Try Again!!  ";
           } else if (loginState is OtpExceptionState) {
-            message = loginState.message;
+            message = "OTP Error Occured Try Again!!  ";
           }
           Scaffold.of(context)
             ..hideCurrentSnackBar()
@@ -75,21 +92,18 @@ class _LoginFormState extends State<LoginForm> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    color:  Color.fromRGBO(255, 158, 249, 2),
+                    color: Theme.of(context).primaryColor,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Header(),
-                        Container(
-                          child: ConstrainedBox(
-                            constraints:
-                                BoxConstraints.tight(Size.fromHeight(180)),
+                        SingleChildScrollView(
+                          child: Container(
                             child: getViewAsPerState(state),
-                          ),
-                          decoration: BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(62))),
+                            ),
+                          ),
                         )
                       ],
                     ),
@@ -107,146 +121,20 @@ class _LoginFormState extends State<LoginForm> {
     if (state is Unauthenticated) {
       return NumberInput();
     } else if (state is OtpSentState || state is OtpExceptionState) {
-
       return OtpInput();
-
     } else if (state is LoadingState) {
-
       return LoadingIndicator();
-
     } else if (state is LoginCompleteState) {
-
-      BlocProvider.of<AuthenticationBloc>(context)
-          .add(LoggedIn());
-
+      BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
+    } else if (state is InternetNotConnectState) {
+      return NoInternet(
+        onclick: () {
+          BlocProvider.of<LoginBloc>(context).add(CheckInternet());
+        },
+        fontsize: 20,
+      );
     } else {
       return NumberInput();
     }
-  }
-}
-
-class Header extends StatelessWidget {
-  
-  const Header({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        margin: EdgeInsets.all(32),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Getting Started to Grocery",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class LoadingIndicator extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => Center(
-        child: CircularProgressIndicator(),
-      );
-}
-
-class NumberInput extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _phoneTextController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(top: 38, bottom: 16.0, left: 16.0, right: 16.0),
-      child: Column(
-        children: <Widget>[
-          Form(
-            key: _formKey,
-            child: EditTextUtils().getCustomEditTextArea(
-                labelValue: "Enter phone number",
-                hintValue: "9876543210",
-                controller: _phoneTextController,
-                keyboardType: TextInputType.number,
-                icon: Icons.phone,
-                validator: (value) {
-                  return validateMobile(value);
-                }),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: RaisedButton(
-              onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  BlocProvider.of<LoginBloc>(context).add(SendOtpEvent(
-                      phoNo: "+91" + _phoneTextController.value.text));
-                }
-              },
-              color: Colors.orange,
-              child: Text(
-                "Submit",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  String validateMobile(String value) {
-// Indian Mobile number are of 10 digit only
-    if (value.length != 10)
-      return 'Mobile Number must be of 10 digit';
-    else
-      return null;
-  }
-}
-
-class OtpInput extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return ConstrainedBox(
-      child: Padding(
-        padding: const EdgeInsets.only(
-            top: 48, bottom: 16.0, left: 16.0, right: 16.0),
-        child: Column(
-          children: <Widget>[
-            PinEntryTextField(
-                fields: 6,
-                onSubmit: (String pin) {
-                  BlocProvider.of<LoginBloc>(context)
-                      .add(VerifyOtpEvent(otp: pin));
-                }),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
-                onPressed: () {
-                  BlocProvider.of<LoginBloc>(context).add(AppStartEvent());
-                },
-                color: Colors.orange,
-                child: Text(
-                  "Back",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-      constraints: BoxConstraints.tight(Size.fromHeight(280)),
-    );
   }
 }

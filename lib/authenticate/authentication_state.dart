@@ -16,3 +16,5 @@ class SetUserDetailState extends AuthenticationState {}
 class Unauthenticated extends AuthenticationState {}
 
 class Loading extends AuthenticationState {}
+
+class InternetNotConnect extends AuthenticationState {}

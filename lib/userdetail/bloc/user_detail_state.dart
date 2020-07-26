@@ -17,4 +17,12 @@ class ExceptionState extends UserDetailState {
   List<Object> get props => [message];
 }
 
+class UpdateAddressState extends UserDetailState{}
+
 class LoadingState extends UserDetailState {}
+
+class InternetNotConnectState extends UserDetailState{
+  @override
+  List<Object> get props => [];
+
+}

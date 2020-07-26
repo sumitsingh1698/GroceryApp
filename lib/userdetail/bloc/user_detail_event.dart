@@ -15,3 +15,22 @@ class PersonalDetailUpdateEvent extends UserDetailEvent{
   @override
   List<Object> get props => [email,fname,lname];  
 }
+
+@immutable
+class AddressDetailUpdateEvent extends UserDetailEvent{
+  String hno;
+  String floor;
+  String streetNo;
+  String address;
+  String landmark;
+  String pincode;
+  AddressDetailUpdateEvent({this.hno,this.floor,this.streetNo,this.address,this.landmark,this.pincode});
+
+  @override
+  List<Object> get props => [hno,floor,streetNo,address,landmark,pincode];  
+}
+
+class CheckInternet extends UserDetailEvent{
+  @override
+  List<Object> get props => [];
+}
