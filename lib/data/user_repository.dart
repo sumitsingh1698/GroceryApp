@@ -9,13 +9,12 @@ class UserRepository {
   final UserDetail userDetail;
   String phoneNumber;
 
-
   // Constructor -----------------------------------------------------
 
   UserRepository({FirebaseAuth firebaseAuth, UserDetail userDetail})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         userDetail = userDetail ?? UserDetail();
-  
+
   //Send Otp ---------------------------------------------------------
 
   Future<void> sendOtp(
@@ -105,7 +104,6 @@ class UserRepository {
     print("update persnal success : ${result.data}");
   }
 
-
   //update address details -------------------------------------------
   Future<void> updateAddressDetails(String hno, String floor, String streetNo,
       String address, String landmark, String pincode) async {
@@ -145,19 +143,83 @@ class UserRepository {
     final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
       functionName: 'addProduct',
     );
-     print("enter in second product");
+    print("enter in second product");
     final HttpsCallableResult result = await callable.call(
       <String, dynamic>{
         'name': product.name,
-            'oprice': product.oprice,
-            'discount': product.discount,
-            'pkt': product.pkt,
-            'quantity': product.quantity,
-            'qgiven': product.qgiven,
-            'scat': product.scat,
-            'cat': product.cat
+        'oprice': product.oprice,
+        'discount': product.discount,
+        'pkt': product.pkt,
+        'quantity': product.quantity,
+        'qgiven': product.qgiven,
+        'scat': product.scat,
+        'cat': product.cat
       },
     );
     print("update persnal success : ${result.data}");
+  }
+
+  //------------------------------------------------------------------/////////////////////
+
+  // Get Subcategories of the Categories
+
+  Future<List> getSubcat(String cat) async {
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'getSubCategories',
+    );
+    List<dynamic> subcat;
+    await callable.call(
+      <String, dynamic>{
+        'cat': cat,
+      },
+    ).then((value) {
+      subcat = value.data['data']['values']['subcats'];
+    });
+
+    return subcat;
+  }
+  //----------------------------------------------------------///////////////////////
+
+  // Get List of Product by online  --------------------------------------
+
+  Future<List> getProductList(String cat, String subcat) async {
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'getProductList',
+    );
+    List<Product> products = [];
+    await callable.call(
+      <String, dynamic>{
+        'cat': cat,
+        'subcat': subcat,
+      },
+    ).then((value) {
+      print(value.data['data']['values'][0]['name']);
+      int noe = value.data['data']['values'].length;
+      for (int i = 0; i < noe; i++) {
+        products.add(Product(
+          name: value.data['data']['values'][i]['name'],
+          cat: value.data['data']['values'][i]['cat'],
+          oprice: value.data['data']['values'][i]['oprice'],
+          scat: value.data['data']['values'][i]['scat'],
+          pkt: value.data['data']['values'][i]['pkt'],
+          discount: value.data['data']['values'][i]['discount'],
+          qgiven: value.data['data']['values'][i]['qgiven'],
+          quantity: value.data['data']['values'][i]['quantity'],
+          imageurl: value.data['data']['values'][i]['imageurl'],
+        ));
+      }
+    });
+
+    return products;
+  }
+
+  //----------------------------------------------------
+
+  // Add Product to cart
+
+  void addToCart(String productId) {
+    print("add to CArt");
+    userDetail.insertInCart(productId);
+    print("prduct added");
   }
 }

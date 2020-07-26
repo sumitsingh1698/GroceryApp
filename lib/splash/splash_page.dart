@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -8,12 +7,20 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FaIcon(FontAwesomeIcons.shopify, size: 50,color: Theme.of(context).primaryColor,),
+            Text(
+              " Kart",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,color: Theme.of(context).primaryColor),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -27,5 +34,4 @@ class _SplashPageState extends State<SplashPage> {
   void dispose() {
     super.dispose();
   }
-
 }

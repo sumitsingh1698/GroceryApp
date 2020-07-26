@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/res/merged/release/color/common_google_signin_btn_tint.xml",
+        "source": "/home/sumit/.gradle/caches/transforms-2/files-2.1/8d6c6f9674926f9572a4495c9d76e7ed/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/res/merged/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/home/sumit/.gradle/caches/transforms-2/files-2.1/8d6c6f9674926f9572a4495c9d76e7ed/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/res/merged/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/home/sumit/.gradle/caches/transforms-2/files-2.1/8d6c6f9674926f9572a4495c9d76e7ed/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_light.xml"
+    }
+]

@@ -184,7 +184,9 @@ class InitStateWidget extends StatelessWidget {
                                   quantity: _quantityTextController.text.trim(),
                                   qgiven: _qgivenTextController.text.trim(),
                                   scat: _scatTextController.text.trim(),
-                                  cat: _catTextController.text.trim())));
+                                  cat: _catTextController.text.trim(),
+                                  imageurl: "",
+                                  )));
                     }
                   },
                   child: Text(

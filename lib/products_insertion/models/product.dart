@@ -9,5 +9,15 @@ class Product {
   String qgiven;
   String scat;
   String cat;
-  Product({@required this.name,@required this.oprice, @required this.discount,@required this.pkt,@required this.quantity,@required this.qgiven,@required this.scat,@required this.cat});
+  String imageurl;
+  Product(
+      {@required this.name,
+      @required this.oprice,
+      @required this.discount,
+      @required this.pkt,
+      @required this.quantity,
+      @required this.qgiven,
+      @required this.scat,
+      @required this.cat,
+      @required this.imageurl});
 }

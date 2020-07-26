@@ -11,7 +11,6 @@ import 'package:GroceryApp/userdetail/set_user_detail.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'authenticate/authentication_bloc.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
@@ -37,7 +36,6 @@ class SimpleBlocDelegate extends BlocDelegate {
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = SimpleBlocDelegate();
-
   UserRepository userRepository = UserRepository();
   runApp(BlocProvider(
     create: (context) => AuthenticationBloc(userRepository)..add(AppStarted()),
@@ -67,6 +65,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         // This is the theme of your application.
         fontFamily: 'OpenSans',
+        primaryIconTheme: IconThemeData(color: Colors.white),
         primarySwatch: createMaterialColor(Color(0xFF00bef2)),
       ),
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
@@ -78,7 +77,7 @@ class _MyAppState extends State<MyApp> {
               userRepository: userRepository,
             );
           } else if (state is Authenticated) {
-            return HomePage(
+            return HomepageParent(
               userRepository,
             );
           } else if (state is SetUserDetailState) {

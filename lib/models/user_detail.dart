@@ -18,7 +18,7 @@ class UserDetail {
    this._fname ="";
    this._lname ="";
    this._email ="";
-   this._cart = [];
+   this._cart =  List();
    this._hno = "";
    this._floor = "";
    this._streetNo = "";
@@ -58,7 +58,9 @@ class UserDetail {
     _email = value;
   }
   set setCart(List<dynamic> value) {
-    _cart = value;
+    for(int i = 0 ; i < value.length; i++){
+        _cart.add(value[i]);
+    }
   }
 
   set setHno(String value) {
@@ -83,5 +85,8 @@ class UserDetail {
     _createdDate = value;
   }
 
-
+   void insertInCart(dynamic productId){
+      _cart.add(productId);
+      print(_cart.length);
+   }
 }
