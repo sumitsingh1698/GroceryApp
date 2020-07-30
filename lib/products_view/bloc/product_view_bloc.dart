@@ -9,6 +9,7 @@ class ProductViewBloc extends Bloc<ProductViewEvent,ProductViewState>{
   @override
   Stream<ProductViewState> mapEventToState(ProductViewEvent event) async* {
    if(event is ProductViewEvent){
+     
      yield ProductInRowState();
    }
   }

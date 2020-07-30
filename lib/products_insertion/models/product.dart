@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class Product {
+  String productId;
   String name;
   String oprice;
   String discount;
@@ -11,7 +12,8 @@ class Product {
   String cat;
   String imageurl;
   Product(
-      {@required this.name,
+      { @required this.productId,
+        @required this.name,
       @required this.oprice,
       @required this.discount,
       @required this.pkt,

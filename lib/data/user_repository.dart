@@ -197,6 +197,7 @@ class UserRepository {
       int noe = value.data['data']['values'].length;
       for (int i = 0; i < noe; i++) {
         products.add(Product(
+          productId: value.data['data']['values'][i]['id'],
           name: value.data['data']['values'][i]['name'],
           cat: value.data['data']['values'][i]['cat'],
           oprice: value.data['data']['values'][i]['oprice'],
@@ -217,9 +218,82 @@ class UserRepository {
 
   // Add Product to cart
 
-  void addToCart(String productId) {
+  bool addToCart(String productId) {
     print("add to CArt");
-    userDetail.insertInCart(productId);
-    print("prduct added");
+
+    if (!userDetail.insertInCart(productId)) {
+      return false;
+    }
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'addToCart',
+    );
+    try {
+      callable.call(
+        <String, dynamic>{
+          'productId': productId,
+        },
+      );
+    } catch (e) {
+      print(e);
+    }
+    return true;
+  }
+  // delete to Cart ------------------------------------------------
+  bool deleteToCart(String productId) {
+    print("add to CArt");
+
+    if (!userDetail.deleteInCart(productId)) {
+      return false;
+    }
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'deleteToCart',
+    );
+    try {
+      callable.call(
+        <String, dynamic>{
+          'productId': productId,
+        },
+      );
+    } catch (e) {
+      print(e);
+    }
+    return true;
+  }
+
+  // ------------------------------------------------------
+
+  // Get Products for Carts
+
+  Future<List> getProductsForCart() async {
+    print("get product for cart");
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'getProductListOfCart',
+    );
+    List<Product> products = [];
+    await callable.call(
+      <String, dynamic>{'productsId': userDetail.getCart},
+    ).then((value) {
+
+      // print(value.data['data']['values'][0]['name']);
+      int noe = value.data['data']['values'].length;
+      for (int i = 0; i < noe; i++) {
+        products.add(Product(
+          productId: value.data['data']['values'][i]['id'],
+          name: value.data['data']['values'][i]['name'],
+          cat: value.data['data']['values'][i]['cat'],
+          oprice: value.data['data']['values'][i]['oprice'],
+          scat: value.data['data']['values'][i]['scat'],
+          pkt: value.data['data']['values'][i]['pkt'],
+          discount: value.data['data']['values'][i]['discount'],
+          qgiven: value.data['data']['values'][i]['qgiven'],
+          quantity: value.data['data']['values'][i]['quantity'],
+          imageurl: value.data['data']['values'][i]['imageurl'],
+        ));
+      }
+    });
+
+    return products;
+
+    //------------------------------------------------------------------
   }
 }

@@ -1,6 +1,7 @@
 import 'package:GroceryApp/data/user_repository.dart';
 import 'package:GroceryApp/home_page/bloc/homepage_state.dart';
 import 'package:GroceryApp/home_page/bloc/hompage_event.dart';
+import 'package:GroceryApp/home_page/homepage.dart';
 import 'package:GroceryApp/products_insertion/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -21,7 +22,13 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
         yield SubcatState(subcat);
       }
       if (event is InitStartEvent) {
+         
         yield InitHomepageState();
+      }
+
+      if(event is AddProductToCart){
+       userRepository.addToCart(event.productId);
+       yield InitHomepageState();
       }
       if (event is ProductListEvent) {
         yield HomepageLoadingState();

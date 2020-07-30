@@ -177,6 +177,7 @@ class InitStateWidget extends StatelessWidget {
                       BlocProvider.of<MangProductBloc>(context).add(
                           AddProductEvent(
                               product: Product(
+                                  productId: "",
                                   name: _nameTextController.text.trim(),
                                   oprice: _opriceTextController.text.trim(),
                                   discount: _discountTextController.text.trim(),

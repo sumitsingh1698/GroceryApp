@@ -32,3 +32,12 @@ class ProductListEvent extends HomepageEvent{
 
 }
 
+class AddProductToCart extends HomepageEvent{
+ final String productId;
+ final String quantity;
+AddProductToCart({@required this.productId,@required this.quantity});
+  @override
+  List<Object> get props => [productId];
+
+}
+

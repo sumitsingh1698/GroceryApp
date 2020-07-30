@@ -55,6 +55,7 @@ class ProductSearch extends SearchDelegate<Product> {
                         final AlgoliaObjectSnapshot result =
                             snapshot.data.hits[index];
                         Product _product = Product(
+                          productId: result.index,
                           name: result.data['name'],
                           cat: result.data['cat'],
                           oprice: result.data['oprice'],

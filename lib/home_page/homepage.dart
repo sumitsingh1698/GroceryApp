@@ -7,6 +7,7 @@ import 'package:GroceryApp/home_page/homepage_widgets/homepage_drawer.dart';
 import 'package:GroceryApp/home_page/homepage_widgets/homepage_silverappbar.dart';
 import 'package:GroceryApp/home_page/homepage_widgets/homepage_subcat.dart';
 import 'package:GroceryApp/home_page/homepage_widgets/homepage_third_section.dart';
+import 'package:GroceryApp/login/login_page_widgets/loading_indicator.dart';
 import 'package:GroceryApp/products_view/product_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,20 +15,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomepageParent extends StatelessWidget {
   final UserRepository _userRepository;
-  final List list = ['12', '11'];
 
   HomepageParent(this._userRepository);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomepageBloc(userRepository: _userRepository),
-      child: Scaffold(
-        drawer: HomePage_Drawer(_userRepository),
-        floatingActionButton: CartFloatingButton(_userRepository.userDetail),
-        body: HomePage(_userRepository),
-      ),
-    );
+        create: (context) => HomepageBloc(userRepository: _userRepository),
+        child: HomePage(_userRepository));
   }
 }
 
@@ -49,7 +44,6 @@ class _HomePageState extends State<HomePage> {
     _homepageBloc = BlocProvider.of<HomepageBloc>(context);
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -72,93 +66,110 @@ class _HomePageState extends State<HomePage> {
       child: BlocBuilder<HomepageBloc, HomepageState>(
         builder: (context, state) {
           if (state is InitHomepageState) {
-            return CustomScrollView(
-              slivers: <Widget>[
-                HomePageSilverAppBar(),
-                //   SliverFixedExtentList(
-                //     itemExtent: 60.0,
-                //     delegate: SliverChildListDelegate(
-                //       [
-                //         HomePageFirstSection(),
-                //       ],
-                //     ),
-                //   ),
-                //  SliverToBoxAdapter(
-                //    child: HomePageSecondSection(),
-                //  ),
-                SliverFixedExtentList(
-                  itemExtent: 40.0,
-                  delegate: SliverChildListDelegate(
-                    [
-                      Container(
-                          padding: EdgeInsets.only(left: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text("Categories",
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.black,
-                                  ),
-                                  textAlign: TextAlign.left),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-                HomePageThirdSection(),
-                 SliverFixedExtentList(
-                  itemExtent: 50.0,
-                  delegate: SliverChildListDelegate(
-                    [
-                      SizedBox(height:20.0)
-                    ]
-                  ),) 
-
-              ],
-            );
+            return Scaffold(
+                drawer: HomePage_Drawer(widget.userRepository),
+                floatingActionButton:
+                    CartFloatingButton(widget.userRepository),
+                body: CustomScrollView(
+                  slivers: <Widget>[
+                    HomePageSilverAppBar(),
+                    //   SliverFixedExtentList(
+                    //     itemExtent: 60.0,
+                    //     delegate: SliverChildListDelegate(
+                    //       [
+                    //         HomePageFirstSection(),
+                    //       ],
+                    //     ),
+                    //   ),
+                    //  SliverToBoxAdapter(
+                    //    child: HomePageSecondSection(),
+                    //  ),
+                    SliverFixedExtentList(
+                      itemExtent: 40.0,
+                      delegate: SliverChildListDelegate(
+                        [
+                          Container(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text("Categories",
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.left),
+                                ],
+                              )),
+                        ],
+                      ),
+                    ),
+                    HomePageThirdSection(),
+                    SliverFixedExtentList(
+                      itemExtent: 50.0,
+                      delegate:
+                          SliverChildListDelegate([SizedBox(height: 20.0)]),
+                    )
+                  ],
+                ));
           } else if (state is HomepageProductListState) {
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (context) => ProductView(
+            //                state.products,
+            //                widget.userRepository,
+            //             )));
+
             return ProductView(
-              products: state.products,
-              userRepository: widget.userRepository,
+              state.products,
+              widget.userRepository
             );
           } else if (state is SubcatState) {
-            return CustomScrollView(
-              slivers: <Widget>[
-                HomePageSilverAppBar(),
-                SliverFixedExtentList(
-                  itemExtent: 50.0,
-                  delegate: SliverChildListDelegate(
-                    [
-                      Container(
-                          padding: EdgeInsets.only(top: 10.0, left: 0.0),
-                          child: Row(
-                            children: <Widget>[
-                              IconButton(
-                                  icon: Icon(Icons.arrow_back_ios),
-                                  onPressed: () {
-                                    BlocProvider.of<HomepageBloc>(context)
-                                        .add(InitStartEvent());
-                                  })
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-                HomePageSubcatSection(
-                  subcats: state.subcat,
-                ),
-                SliverFixedExtentList(
-                  itemExtent: 50.0,
-                  delegate: SliverChildListDelegate(
-                    [
-                      SizedBox(height:20.0)
-                    ]
-                  ),)
-              ],
-            );
+            return Scaffold(
+                drawer: HomePage_Drawer(widget.userRepository),
+                floatingActionButton:
+                    CartFloatingButton(widget.userRepository),
+                body: CustomScrollView(
+                  slivers: <Widget>[
+                    HomePageSilverAppBar(),
+                    SliverFixedExtentList(
+                      itemExtent: 50.0,
+                      delegate: SliverChildListDelegate(
+                        [
+                          Container(
+                              padding: EdgeInsets.only(top: 10.0, left: 0.0),
+                              child: Row(
+                                children: <Widget>[
+                                  IconButton(
+                                      icon: Icon(Icons.arrow_back_ios),
+                                      onPressed: () {
+                                        BlocProvider.of<HomepageBloc>(context)
+                                            .add(InitStartEvent());
+                                      })
+                                ],
+                              )),
+                        ],
+                      ),
+                    ),
+                    HomePageSubcatSection(
+                      subcats: state.subcat,
+                    ),
+                    SliverFixedExtentList(
+                      itemExtent: 50.0,
+                      delegate:
+                          SliverChildListDelegate([SizedBox(height: 20.0)]),
+                    )
+                  ],
+                ));
           }
-          return Container();
+          return Scaffold(
+            drawer: HomePage_Drawer(widget.userRepository),
+            floatingActionButton:
+                CartFloatingButton(widget.userRepository),
+            body: LoadingIndicator(),
+          );
         },
       ),
     );
