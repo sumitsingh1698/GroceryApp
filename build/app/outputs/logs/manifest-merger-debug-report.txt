@@ -5,17 +5,18 @@ INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidMani
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:1:1-47:12
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:1:1-47:12
 MERGED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:1:1-47:12
+MERGED from [:fluttertoast] /mnt/sda7/flutterspace/GroceryApp/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_core_web] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] /mnt/sda7/flutterspace/GroceryApp/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:connectivity] /mnt/sda7/flutterspace/GroceryApp/build/connectivity/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-10:12
 MERGED from [:connectivity_macos] /mnt/sda7/flutterspace/GroceryApp/build/connectivity_macos/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:shared_preferences] /mnt/sda7/flutterspace/GroceryApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:sqflite] /mnt/sda7/flutterspace/GroceryApp/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider] /mnt/sda7/flutterspace/GroceryApp/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:firebase_core_web] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:fluttertoast] /mnt/sda7/flutterspace/GroceryApp/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] /mnt/sda7/flutterspace/GroceryApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_functions_web] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions_web/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/1e43ec82407637f465c620e746b223b7/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/2a70ee504bd32b1bd949b6dd58d86852/firebase-analytics-17.2.2/AndroidManifest.xml:2:1-9:12
@@ -57,6 +58,7 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/sumit/.gradle/c
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/ec735b528ee8f52f56a38a2f27a69a4b/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/c8f4c2580dddd9ecf64fc10bf9fbc418/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/dff04f4f27a157ea6f57a15b661fd9d7/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:2:1-32:12
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidManifest.xml:1:1-7:12
@@ -76,14 +78,16 @@ INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidMan
 		ADDED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:1:11-69
 application
 ADDED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:8:5-46:19
+MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/2a70ee504bd32b1bd949b6dd58d86852/firebase-analytics-17.2.2/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/2a70ee504bd32b1bd949b6dd58d86852/firebase-analytics-17.2.2/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:28:5-53:19
@@ -126,6 +130,8 @@ MERGED from [androidx.core:core:1.1.0] /home/sumit/.gradle/caches/transforms-2/f
 MERGED from [androidx.core:core:1.1.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4227c25f5adddf6ac1aa1a65c6b6f6a4/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4227c25f5adddf6ac1aa1a65c6b6f6a4/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:11:5-30:19
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:11:5-30:19
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/AndroidManifest.xml:24:18-86
 	android:label
@@ -180,28 +186,30 @@ uses-sdk
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml
+MERGED from [:fluttertoast] /mnt/sda7/flutterspace/GroceryApp/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /mnt/sda7/flutterspace/GroceryApp/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core_web] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core_web] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] /mnt/sda7/flutterspace/GroceryApp/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] /mnt/sda7/flutterspace/GroceryApp/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity] /mnt/sda7/flutterspace/GroceryApp/build/connectivity/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity] /mnt/sda7/flutterspace/GroceryApp/build/connectivity/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_macos] /mnt/sda7/flutterspace/GroceryApp/build/connectivity_macos/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_macos] /mnt/sda7/flutterspace/GroceryApp/build/connectivity_macos/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] /mnt/sda7/flutterspace/GroceryApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] /mnt/sda7/flutterspace/GroceryApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] /mnt/sda7/flutterspace/GroceryApp/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] /mnt/sda7/flutterspace/GroceryApp/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /mnt/sda7/flutterspace/GroceryApp/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /mnt/sda7/flutterspace/GroceryApp/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_core_web] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_core_web] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] /mnt/sda7/flutterspace/GroceryApp/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] /mnt/sda7/flutterspace/GroceryApp/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /mnt/sda7/flutterspace/GroceryApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /mnt/sda7/flutterspace/GroceryApp/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_functions_web] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:cloud_functions_web] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions_web/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/1e43ec82407637f465c620e746b223b7/multidex-2.0.0/AndroidManifest.xml:20:5-43
@@ -284,6 +292,8 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/s
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/c8f4c2580dddd9ecf64fc10bf9fbc418/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/dff04f4f27a157ea6f57a15b661fd9d7/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/dff04f4f27a157ea6f57a15b661fd9d7/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:5:5-7:41
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:5:5-7:41
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidManifest.xml
 INJECTED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidManifest.xml
 	android:targetSdkVersion
@@ -308,14 +318,16 @@ MERGED from [com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches
 MERGED from [com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-storage:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/ce6c1d1a35a4df8a49dfa6eae430515c/jetified-firebase-storage-17.0.0/AndroidManifest.xml:27:5-67
 MERGED from [com.google.firebase:firebase-storage:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/ce6c1d1a35a4df8a49dfa6eae430515c/jetified-firebase-storage-17.0.0/AndroidManifest.xml:27:5-67
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:9:5-67
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:9:5-67
 	android:name
 		ADDED from /mnt/sda7/flutterspace/GroceryApp/android/app/src/debug/AndroidManifest.xml:6:22-64
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-MERGED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/ca912bff2260618b5b638fe661521702/play-services-measurement-api-17.2.2/AndroidManifest.xml:27:9-33:19
@@ -337,7 +349,13 @@ MERGED from [com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/cac
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
 	android:name
-		ADDED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+		ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.cloudfunctions.FlutterFirebaseAppRegistrar
 ADDED from [:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
 	android:value
@@ -350,12 +368,6 @@ ADDED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_aut
 		ADDED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-122
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
-ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
-	android:name
-		ADDED from [:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
 	android:value
@@ -382,6 +394,18 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [:connectivity] /mnt/sda7/flutterspace/GroceryApp/build/connectivity/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-76
 	android:name
 		ADDED from [:connectivity] /mnt/sda7/flutterspace/GroceryApp/build/connectivity/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-73
+activity#com.razorpay.CheckoutActivity
+ADDED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:20
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:18:9-29:20
+MERGED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:18:9-29:20
+	android:label
+		ADDED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-46
+	android:configChanges
+		ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:20:13-83
+	android:theme
+		ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:21:13-49
+	android:name
+		ADDED from [:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-57
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/ca912bff2260618b5b638fe661521702/play-services-measurement-api-17.2.2/AndroidManifest.xml:24:5-68
@@ -532,3 +556,21 @@ ADDED from [com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.g
 		ADDED from [com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+receiver#com.razorpay.RzpTokenReceiver
+ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:12:9-16:20
+	android:name
+		ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:12:19-63
+intent-filter#action:name:rzp.device_token.share
+ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:13:13-15:29
+action#rzp.device_token.share
+ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:14:17-65
+	android:name
+		ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:14:25-62
+intent-filter#action:name:android.intent.action.MAIN+data:host:rzp.io+data:scheme:io.rzp
+ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:22:13-28:29
+data
+ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:25:17-27:47
+	android:host
+		ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:26:21-42
+	android:scheme
+		ADDED from [com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:27:21-44

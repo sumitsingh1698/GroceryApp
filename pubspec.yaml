@@ -50,6 +50,8 @@ dependencies:
   cloud_functions: ^0.5.0
   firebase_image: ^0.1.6
   algolia: ^0.1.7
+  razorpay_flutter: ^1.2.2
+
 
 
   

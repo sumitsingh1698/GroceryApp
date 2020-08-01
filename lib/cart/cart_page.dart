@@ -2,6 +2,8 @@ import 'package:GroceryApp/cart/bloc/cart_event.dart';
 import 'package:GroceryApp/cart/bloc/cart_state.dart';
 import 'package:GroceryApp/data/user_repository.dart';
 import 'package:GroceryApp/home_page/homepage.dart';
+import 'package:GroceryApp/orders/order.dart';
+import 'package:GroceryApp/payment/payment_page.dart';
 import 'package:GroceryApp/products_insertion/models/product.dart';
 import 'package:firebase_image/firebase_image.dart';
 import 'package:flutter/material.dart';
@@ -21,16 +23,25 @@ class CartScreenParent extends StatelessWidget {
 }
 
 class CartScreen extends StatefulWidget {
-   final UserRepository userRepository;
-   CartScreen(this.userRepository);
+  final UserRepository userRepository;
+  CartScreen(this.userRepository);
 
   @override
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
-
   CartBloc _cartBloc;
+
+  List<String> getListOfProductId(List<Product> products) {
+    List<String> productIds = new List();
+    for (int i = 0; i < products.length; i++) {
+      print(products[i].productId);
+      productIds.add(products[i].productId.toString());
+    }
+
+    return productIds;
+  }
 
   @override
   void initState() {
@@ -38,75 +49,74 @@ class _CartScreenState extends State<CartScreen> {
     super.initState();
   }
 
-  String getWeekDay(int day){
-     switch(day){
-       case 1:
-       return "Monday";
-       break;
-       case 2:
-       return "Tuesday";
-       break;
-       case 3:
-       return "Wednesday";
-       break;
-       case 4:
-       return "Thursday";
-       break;
-       case 5:
-       return "Friday";
-       break;
-       case 6:
-       return "Saturday";
-       break;
-       case 7:
-       return "Sunday";
-       break;
-     }
-     return "";
+  String getWeekDay(int day) {
+    switch (day) {
+      case 1:
+        return "Monday";
+        break;
+      case 2:
+        return "Tuesday";
+        break;
+      case 3:
+        return "Wednesday";
+        break;
+      case 4:
+        return "Thursday";
+        break;
+      case 5:
+        return "Friday";
+        break;
+      case 6:
+        return "Saturday";
+        break;
+      case 7:
+        return "Sunday";
+        break;
+    }
+    return "";
   }
-  String getMonth(int month){
-     switch(month){
-       case 1:
-       return "January";
-       break;
-       case 2:
-       return "February";
-       break;
-       case 3:
-       return "March";
-       break;
-       case 4:
-       return "April";
-       break;
-       case 5:
-       return "May";
-       break;
-       case 6:
-       return "June";
-       break;
-       case 7:
-       return "July";
-       break;
-       case 8:
-       return "August";
-       break;
-       case 9:
-       return "September";
-       break;
-       case 10:
-       return "October";
-       break;
-       case 11:
-       return "November";
-       break;
-       case 12:
-       return "December";
-       break;
 
-     }
-     return "";
-  } 
-
+  String getMonth(int month) {
+    switch (month) {
+      case 1:
+        return "January";
+        break;
+      case 2:
+        return "February";
+        break;
+      case 3:
+        return "March";
+        break;
+      case 4:
+        return "April";
+        break;
+      case 5:
+        return "May";
+        break;
+      case 6:
+        return "June";
+        break;
+      case 7:
+        return "July";
+        break;
+      case 8:
+        return "August";
+        break;
+      case 9:
+        return "September";
+        break;
+      case 10:
+        return "October";
+        break;
+      case 11:
+        return "November";
+        break;
+      case 12:
+        return "December";
+        break;
+    }
+    return "";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +162,6 @@ class _CartScreenState extends State<CartScreen> {
         if (state is InitCartState) {
           double checkoutAmmount = state.totalPrice + state.serviceCharge;
           List<Product> products = state.products;
-
           return Scaffold(
               bottomNavigationBar: BottomAppBar(
                 child: Container(
@@ -160,8 +169,21 @@ class _CartScreenState extends State<CartScreen> {
                   child: RaisedButton(
                       padding: EdgeInsets.all(10.0),
                       onPressed: () {
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) => Checkout()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentPage(
+                                      phoneNo: "8285828488",
+                                      email: widget.userRepository.userDetail.getEmail,
+                                      order: Order(
+                                          orderId: "1",
+                                          orderDateTime: DateTime.now(),
+                                          orderPrice: checkoutAmmount,
+                                          paymentStatus: "pending",
+                                          deliveryStatus: "progress",
+                                          products:
+                                              getListOfProductId(products)),
+                                    )));
                       },
                       child: Text(
                         "\₹ $checkoutAmmount to Checkout",
@@ -190,17 +212,16 @@ class _CartScreenState extends State<CartScreen> {
                         onTap: () {},
                         child: Stack(children: <Widget>[
                           new IconButton(
-                              
                               icon: new Icon(
                                 Icons.home,
                                 color: Theme.of(context).primaryColor,
                               ),
                               onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomepageParent(widget.userRepository)));
-                                
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomepageParent(
+                                            widget.userRepository)));
                               }),
                         ]),
                       ),
@@ -336,7 +357,8 @@ class _CartScreenState extends State<CartScreen> {
                                                 : 180,
                                             child: Column(
                                               children: <Widget>[
-                                                Text("${products[ind - 1].name} (${state.cartQuantity[ind - 1]})",
+                                                Text(
+                                                    "${products[ind - 1].name} (${state.cartQuantity[ind - 1]})",
                                                     style: TextStyle(
                                                         fontSize: 15.0,
                                                         color: Colors.black),
@@ -360,10 +382,19 @@ class _CartScreenState extends State<CartScreen> {
                                         children: <Widget>[
                                           Container(
                                               padding: EdgeInsets.all(10.0),
-                                              child: IconButton(icon: Icon(Icons.delete,color: Colors.grey,), onPressed: (){
-                                                         BlocProvider.of<CartBloc>(context).add(RemoveCartProductEvent(productId: products[ind -1].productId));
-
-                                              })),
+                                              child: IconButton(
+                                                  icon: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  onPressed: () {
+                                                    BlocProvider.of<CartBloc>(
+                                                            context)
+                                                        .add(RemoveCartProductEvent(
+                                                            productId: products[
+                                                                    ind - 1]
+                                                                .productId));
+                                                  })),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -376,7 +407,12 @@ class _CartScreenState extends State<CartScreen> {
                                                     color: Theme.of(context)
                                                         .primaryColorDark),
                                                 onPressed: () {
-                                                         BlocProvider.of<CartBloc>(context).add(IncreaseCartProductEvent(productId: products[ind -1].productId));
+                                                  BlocProvider.of<CartBloc>(
+                                                          context)
+                                                      .add(IncreaseCartProductEvent(
+                                                          productId:
+                                                              products[ind - 1]
+                                                                  .productId));
 
                                                   // widget.userRepository.userDetail.insertInCartQuantity(products[ind - 1].productId);
                                                   // print(products[ind - 1])
@@ -399,8 +435,12 @@ class _CartScreenState extends State<CartScreen> {
                                                 color: Theme.of(context)
                                                     .primaryColorDark,
                                                 onPressed: () {
-                                                         BlocProvider.of<CartBloc>(context).add(DecreaseCartProductEvent(productId: products[ind -1].productId));
-
+                                                  BlocProvider.of<CartBloc>(
+                                                          context)
+                                                      .add(DecreaseCartProductEvent(
+                                                          productId:
+                                                              products[ind - 1]
+                                                                  .productId));
                                                 },
                                               ),
                                             ],

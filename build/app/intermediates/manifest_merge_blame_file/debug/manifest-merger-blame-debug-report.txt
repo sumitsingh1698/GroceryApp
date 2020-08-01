@@ -5,7 +5,7 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="19"
 9        android:targetSdkVersion="28" />
 10    <!--
 11         Flutter needs it to communicate with the running application
@@ -111,31 +111,31 @@
 73-->/mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:45:13-30
 74
 75        <service
-75-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+75-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 76            android:name="com.google.firebase.components.ComponentDiscoveryService"
-76-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+76-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
 77            android:directBootAware="true"
 77-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
 78            android:exported="false" >
 78-->[com.google.android.gms:play-services-measurement-api:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/ca912bff2260618b5b638fe661521702/play-services-measurement-api-17.2.2/AndroidManifest.xml:29:13-37
 79            <meta-data
-79-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-80                android:name="com.google.firebase.components:io.flutter.plugins.firebase.cloudfunctions.FlutterFirebaseAppRegistrar"
-80-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-133
+79-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+80                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+80-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
 81                android:value="com.google.firebase.components.ComponentRegistrar" />
-81-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+81-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 82            <meta-data
-82-->[:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-83                android:name="com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar"
-83-->[:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-122
+82-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+83                android:name="com.google.firebase.components:io.flutter.plugins.firebase.cloudfunctions.FlutterFirebaseAppRegistrar"
+83-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-133
 84                android:value="com.google.firebase.components.ComponentRegistrar" />
-84-->[:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+84-->[:cloud_functions] /mnt/sda7/flutterspace/GroceryApp/build/cloud_functions/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 85            <meta-data
-85-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-86                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-86-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
+85-->[:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+86                android:name="com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar"
+86-->[:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-122
 87                android:value="com.google.firebase.components.ComponentRegistrar" />
-87-->[:firebase_storage] /mnt/sda7/flutterspace/GroceryApp/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+87-->[:firebase_auth] /mnt/sda7/flutterspace/GroceryApp/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 88            <meta-data
 88-->[:firebase_core] /mnt/sda7/flutterspace/GroceryApp/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
 89                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar"
@@ -174,109 +174,145 @@
 105-->[com.google.firebase:firebase-storage:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/ce6c1d1a35a4df8a49dfa6eae430515c/jetified-firebase-storage-17.0.0/AndroidManifest.xml:33:17-82
 106        </service>
 107
-108        <receiver
-108-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:29:9-33:20
-109            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-109-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:30:13-85
-110            android:enabled="true"
-110-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:31:13-35
-111            android:exported="false" >
-111-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:32:13-37
-112        </receiver>
-113        <receiver
-113-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:34:9-42:20
-114            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-114-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:35:13-100
-115            android:enabled="true"
-115-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:36:13-35
-116            android:exported="true"
-116-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:37:13-36
-117            android:permission="android.permission.INSTALL_PACKAGES" >
-117-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:38:13-69
-118            <intent-filter>
-118-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:39:13-41:29
-119                <action android:name="com.android.vending.INSTALL_REFERRER" />
-119-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:40:17-79
-119-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:40:25-76
-120            </intent-filter>
-121        </receiver>
-122
-123        <service
-123-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:44:9-47:40
-124            android:name="com.google.android.gms.measurement.AppMeasurementService"
-124-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:45:13-84
-125            android:enabled="true"
-125-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:46:13-35
-126            android:exported="false" />
-126-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:47:13-37
-127        <service
-127-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:48:9-52:72
-128            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-128-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:49:13-87
+108        <activity
+108-->[:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:20
+109            android:name="com.razorpay.CheckoutActivity"
+109-->[:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-57
+110            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+110-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:20:13-83
+111            android:label="Razorpay Checkout"
+111-->[:razorpay_flutter] /mnt/sda7/flutterspace/GroceryApp/build/razorpay_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-46
+112            android:theme="@style/CheckoutTheme" >
+112-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:21:13-49
+113            <intent-filter>
+113-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:22:13-28:29
+114                <action android:name="android.intent.action.MAIN" />
+114-->/mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:37:17-68
+114-->/mnt/sda7/flutterspace/GroceryApp/android/app/src/main/AndroidManifest.xml:37:25-66
+115
+116                <data
+116-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:25:17-27:47
+117                    android:host="rzp.io"
+117-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:26:21-42
+118                    android:scheme="io.rzp" />
+118-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:27:21-44
+119            </intent-filter>
+120        </activity>
+121
+122        <receiver
+122-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:29:9-33:20
+123            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+123-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:30:13-85
+124            android:enabled="true"
+124-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:31:13-35
+125            android:exported="false" >
+125-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:32:13-37
+126        </receiver>
+127        <receiver
+127-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:34:9-42:20
+128            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+128-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:35:13-100
 129            android:enabled="true"
-129-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:50:13-35
-130            android:exported="false"
-130-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:51:13-37
-131            android:permission="android.permission.BIND_JOB_SERVICE" />
-131-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:52:13-69
-132
-133        <activity
-133-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:24:9-31:50
-134            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-134-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:25:13-85
-135            android:excludeFromRecents="true"
-135-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:26:13-46
-136            android:exported="true"
-136-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:27:13-36
-137            android:launchMode="singleTask"
-137-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:28:13-44
-138            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-138-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:29:13-102
-139            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-139-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:30:13-72
-140
-141        <receiver
-141-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:37:9-44:20
-142            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-142-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:38:13-78
-143            android:exported="true"
-143-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:39:13-36
-144            android:permission="com.google.android.c2dm.permission.SEND" >
-144-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:40:13-73
-145            <intent-filter>
-145-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:41:13-43:29
-146                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-146-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:42:17-81
-146-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:42:25-78
-147            </intent-filter>
-148        </receiver>
-149
-150        <provider
-150-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
-151            android:name="com.google.firebase.provider.FirebaseInitProvider"
-151-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
-152            android:authorities="com.sumitsingh.GroceryApp.firebaseinitprovider"
-152-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
-153            android:exported="false"
-153-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
-154            android:initOrder="100" />
-154-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
-155
-156        <activity
-156-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
-157            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-157-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
-158            android:exported="false"
-158-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
-159            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-159-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
-160
-161        <meta-data
-161-->[com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
-162            android:name="com.google.android.gms.version"
-162-->[com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
-163            android:value="@integer/google_play_services_version" />
-163-->[com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
-164    </application>
-165
-166</manifest>
+129-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:36:13-35
+130            android:exported="true"
+130-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:37:13-36
+131            android:permission="android.permission.INSTALL_PACKAGES" >
+131-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:38:13-69
+132            <intent-filter>
+132-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:39:13-41:29
+133                <action android:name="com.android.vending.INSTALL_REFERRER" />
+133-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:40:17-79
+133-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:40:25-76
+134            </intent-filter>
+135        </receiver>
+136
+137        <service
+137-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:44:9-47:40
+138            android:name="com.google.android.gms.measurement.AppMeasurementService"
+138-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:45:13-84
+139            android:enabled="true"
+139-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:46:13-35
+140            android:exported="false" />
+140-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:47:13-37
+141        <service
+141-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:48:9-52:72
+142            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+142-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:49:13-87
+143            android:enabled="true"
+143-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:50:13-35
+144            android:exported="false"
+144-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:51:13-37
+145            android:permission="android.permission.BIND_JOB_SERVICE" />
+145-->[com.google.android.gms:play-services-measurement:17.2.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/a2d3f38d709f8b9f54c2677fdca8f29a/play-services-measurement-17.2.2/AndroidManifest.xml:52:13-69
+146
+147        <activity
+147-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:24:9-31:50
+148            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+148-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:25:13-85
+149            android:excludeFromRecents="true"
+149-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:26:13-46
+150            android:exported="true"
+150-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:27:13-36
+151            android:launchMode="singleTask"
+151-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:28:13-44
+152            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+152-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:29:13-102
+153            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+153-->[com.google.firebase:firebase-auth:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/3f4b2bf1061d9ad52d2353dbddbf84a6/jetified-firebase-auth-17.0.0/AndroidManifest.xml:30:13-72
+154
+155        <receiver
+155-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:37:9-44:20
+156            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+156-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:38:13-78
+157            android:exported="true"
+157-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:39:13-36
+158            android:permission="com.google.android.c2dm.permission.SEND" >
+158-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:40:13-73
+159            <intent-filter>
+159-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:41:13-43:29
+160                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+160-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:42:17-81
+160-->[com.google.firebase:firebase-iid:20.0.2] /home/sumit/.gradle/caches/transforms-2/files-2.1/f26cdfb5f8d69cbc9663543f3ec1de65/firebase-iid-20.0.2/AndroidManifest.xml:42:25-78
+161            </intent-filter>
+162        </receiver>
+163
+164        <provider
+164-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+165            android:name="com.google.firebase.provider.FirebaseInitProvider"
+165-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+166            android:authorities="com.sumitsingh.GroceryApp.firebaseinitprovider"
+166-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+167            android:exported="false"
+167-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+168            android:initOrder="100" />
+168-->[com.google.firebase:firebase-common:19.3.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/fd3ad655a51d82d46c6bb2ae29a03074/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+169
+170        <activity
+170-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+171            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+171-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+172            android:exported="false"
+172-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+173            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+173-->[com.google.android.gms:play-services-base:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/4c0b774c09d5393feb013f0dbe753af3/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+174
+175        <meta-data
+175-->[com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+176            android:name="com.google.android.gms.version"
+176-->[com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+177            android:value="@integer/google_play_services_version" />
+177-->[com.google.android.gms:play-services-basement:17.0.0] /home/sumit/.gradle/caches/transforms-2/files-2.1/6d5e3666a174cc535c2d00bc23994bef/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+178
+179        <receiver android:name="com.razorpay.RzpTokenReceiver" >
+179-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:12:9-16:20
+179-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:12:19-63
+180            <intent-filter>
+180-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:13:13-15:29
+181                <action android:name="rzp.device_token.share" />
+181-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:14:17-65
+181-->[com.razorpay:checkout:1.5.16] /home/sumit/.gradle/caches/transforms-2/files-2.1/55f7950a441b1b95db8e1d0ee542a326/checkout-1.5.16/AndroidManifest.xml:14:25-62
+182            </intent-filter>
+183        </receiver>
+184    </application>
+185
+186</manifest>
