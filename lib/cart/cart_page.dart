@@ -173,9 +173,13 @@ class _CartScreenState extends State<CartScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => PaymentPage(
-                                      phoneNo: "8285828488",
-                                      email: widget.userRepository.userDetail.getEmail,
+                                      phoneNo:
+                                          "${widget.userRepository.userDetail.getPhoneNo}",
+                                      email: widget
+                                          .userRepository.userDetail.getEmail,
                                       order: Order(
+                                          custormerId: widget
+                                              .userRepository.userDetail.getUid,
                                           orderId: "1",
                                           orderDateTime: DateTime.now(),
                                           orderPrice: checkoutAmmount,

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-class Order{
+class Order {
   var orderId;
-  var customerId;
+  var custormerId;
   double orderPrice;
   DateTime orderDateTime;
   List<String> products;
@@ -10,10 +10,12 @@ class Order{
   var deliveryStatus;
   var paymentStatus;
 
-  Order({@required this.orderId,
-  @required this.orderPrice,
-  @required this.deliveryStatus,
-  @required this.orderDateTime,
-  @required this.paymentStatus,
-  @required this.products});
+  Order(
+      {@required this.orderId,
+      @required this.orderPrice,
+      @required this.deliveryStatus,
+      @required this.orderDateTime,
+      @required this.paymentStatus,
+      @required this.products,
+      @required this.custormerId});
 }

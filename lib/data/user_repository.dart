@@ -68,6 +68,8 @@ class UserRepository {
       print("data ${value.data['data']['values']}");
       userDetail.setUid = value.data['data']['id'];
       userDetail.setEmail = value.data['data']['values']['email'];
+      userDetail.setPhoneNo = value.data['data']['values']['phoneNo'];
+      userDetail.setOrders = value.data['data']['values']['orders'];
       userDetail.setFname = value.data['data']['values']['fname'];
       userDetail.setLname = value.data['data']['values']['lname'];
       userDetail.setCart = value.data['data']['values']['cart'];
@@ -238,6 +240,7 @@ class UserRepository {
     }
     return true;
   }
+
   // delete to Cart ------------------------------------------------
   bool deleteToCart(String productId) {
     print("add to CArt");
@@ -273,7 +276,6 @@ class UserRepository {
     await callable.call(
       <String, dynamic>{'productsId': userDetail.getCart},
     ).then((value) {
-
       // print(value.data['data']['values'][0]['name']);
       int noe = value.data['data']['values'].length;
       for (int i = 0; i < noe; i++) {
