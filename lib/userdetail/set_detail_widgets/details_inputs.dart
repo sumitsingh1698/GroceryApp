@@ -5,14 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsInputs extends StatelessWidget {
+  final String email;
+  final String fname;
+  final String lname;
+  DetailsInputs(
+      {@required this.email, @required this.fname, @required this.lname});
+
   final _formKey = GlobalKey<FormState>();
   final _emailTextController = TextEditingController();
   final _fnameTextController = TextEditingController();
   final _lnameTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    _emailTextController.text = email;
+    _fnameTextController.text = fname;
+    _lnameTextController.text = lname;
+
     return SingleChildScrollView(
-          child: Container(
+      child: Container(
         padding: EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
@@ -26,7 +36,7 @@ class DetailsInputs extends StatelessWidget {
                     keyboardType: TextInputType.text,
                     icon: Icons.title,
                     color: Theme.of(context).primaryColor,
-                    validator: (value) {   
+                    validator: (value) {
                       return validateNames(value);
                     }),
                 SizedBox(
@@ -53,27 +63,27 @@ class DetailsInputs extends StatelessWidget {
                     icon: Icons.email,
                     color: Theme.of(context).primaryColor,
                     validator: (value) {
-                     return validateEmail(value);
+                      return validateEmail(value);
                     }),
                 SizedBox(
                   height: 20,
                 ),
-                
                 RaisedButton(
                   color: Theme.of(context).primaryColorDark,
                   onPressed: () {
-                   
-                      if(_formKey.currentState.validate()){
+                    if (_formKey.currentState.validate()) {
                       print("confirmed form");
-                          BlocProvider.of<UserDetailBloc>(context).add(PersonalDetailUpdateEvent(
-                            email: _emailTextController.value.text,
-                            fname: _fnameTextController.value.text,
-                            lname: _lnameTextController.value.text));
-                      }
-                        
+                      BlocProvider.of<UserDetailBloc>(context).add(
+                          PersonalDetailUpdateEvent(
+                              email: _emailTextController.value.text,
+                              fname: _fnameTextController.value.text,
+                              lname: _lnameTextController.value.text));
+                    }
                   },
-                  
-                  child: Text( "Next",style: TextStyle(color:Colors.white),),
+                  child: Text(
+                    "Next",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 )
               ]),
         ),
@@ -83,26 +93,23 @@ class DetailsInputs extends StatelessWidget {
 
 //Names Validatation
   String validateNames(String value) {
-    if(value.length < 1){
-       return "Can't be Less than 2 Character";
-     }
-    else if (value.length > 30)
+    if (value.length < 1) {
+      return "Can't be Less than 2 Character";
+    } else if (value.length > 30)
       return "Can't length Greater than 30";
-      
-    else if(!RegExp(r"^[a-zA-Z0-9\s]+$").hasMatch(value)) {
-       return "Can't be Special Character";
-     }
-    else
+    else if (!RegExp(r"^[a-zA-Z0-9\s]+$").hasMatch(value)) {
+      return "Can't be Special Character";
+    } else
       return null;
   }
 
   //Email Validation
   String validateEmail(String value) {
-     
-     if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-       return "Not Valid Email";
-     }
-    else
+    if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(value)) {
+      return "Not Valid Email";
+    } else
       return null;
   }
 }

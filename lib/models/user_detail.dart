@@ -14,7 +14,6 @@ class UserDetail {
   var _pincode;
   var _createdDate;
   List<dynamic> _cart;
-  List<dynamic> _orders;
   List<int> _cartItem;
 
   UserDetail() {
@@ -32,7 +31,6 @@ class UserDetail {
     this._uid = "";
     this._cartItem = List();
     this._phoneNo = "";
-    this._orders = List();
   }
 
   // getters
@@ -50,7 +48,6 @@ class UserDetail {
   String get getCreateDate => _createdDate;
   String get getPhoneNo => _phoneNo;
   List<dynamic> get getCartQuantity => _cartItem;
-  List<dynamic> get getOrderList => _orders;
 
 //Setter
   set setUid(String value) {
@@ -70,6 +67,7 @@ class UserDetail {
   }
 
   set setCart(List<dynamic> value) {
+    _cart = List();
     for (int i = 0; i < value.length; i++) {
       _cart.add(value[i]);
       _cartItem.add(1);
@@ -106,12 +104,6 @@ class UserDetail {
 
   set setPhoneNo(String phoneNo) {
     this._phoneNo = phoneNo;
-  }
-
-  set setOrders(List<dynamic> value) {
-    for (int i = 0; i < value.length; i++) {
-      _orders.add(value[i]);
-    }
   }
 
   bool insertInCart(dynamic productId) {

@@ -23,8 +23,7 @@ import 'authenticate/authentication_bloc.dart';
 */
 
 void main() {
-
-  // 
+  //
   WidgetsFlutterBinding.ensureInitialized();
 
   // BlocSupervisor.delegate is execute when Bloc state is change :
@@ -32,9 +31,9 @@ void main() {
 
   // UserRepository store the all function and Varriable stored for global
   UserRepository userRepository = UserRepository();
-  
-  //runApp function -> blocprovider created a Bloc 
-  // here , It create a AuthenticationBloc and Exccuted the Event Right here 
+
+  //runApp function -> blocprovider created a Bloc
+  // here , It create a AuthenticationBloc and Exccuted the Event Right here
   runApp(BlocProvider(
     create: (context) => AuthenticationBloc(userRepository)..add(AppStarted()),
     child: MyApp(userRepository: userRepository),
@@ -81,6 +80,7 @@ class _MyAppState extends State<MyApp> {
           } else if (state is SetUserDetailState) {
             return UserDetails(
               userRepository: userRepository,
+              page: "login",
             );
           } else if (state is InternetNotConnect) {
             return InternetNotConnectPage();
@@ -121,7 +121,7 @@ class _InternetNotConnectState extends State<InternetNotConnectPage> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-        BlocProvider.of<AuthenticationBloc>(context).add(AppStarted());
+      BlocProvider.of<AuthenticationBloc>(context).add(AppStarted());
     });
   }
 

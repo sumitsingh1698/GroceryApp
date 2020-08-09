@@ -14,10 +14,14 @@ class CartFloatingButton extends StatelessWidget {
       child: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => CartScreenParent(userRepository: userRepository,)));
+          print("length in cart" +
+              userRepository.userDetail.getCart.length.toString());
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CartScreenParent(
+                        userRepository: userRepository,
+                      )));
         },
         child: Stack(
           children: <Widget>[
@@ -45,8 +49,9 @@ class CartFloatingButton extends StatelessWidget {
                               backgroundColor: Colors.orange,
                               radius: 13.0,
                               child: Text(
-                            //widget.userDetail.getCart.length
-                                userRepository.userDetail.getCart.length.toString(),
+                                //widget.userDetail.getCart.length
+                                userRepository.userDetail.getCart.length
+                                    .toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,

@@ -1,6 +1,7 @@
 import 'package:GroceryApp/authenticate/authentication_bloc.dart';
 import 'package:GroceryApp/authenticate/authentication_event.dart';
 import 'package:GroceryApp/data/user_repository.dart';
+import 'package:GroceryApp/orders/orders_page.dart';
 import 'package:GroceryApp/products_insertion/add_product.dart';
 import 'package:GroceryApp/user_account_page/user_account_page.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ class HomePage_Drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       child: Container(
         color: Colors.white12,
         child: new ListView(
@@ -29,7 +29,11 @@ class HomePage_Drawer extends StatelessWidget {
                       trailing: Icon(Icons.arrow_forward_ios,
                           color: Theme.of(context).primaryColorDark),
                       onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=> UserAccountPage(_userRepository)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    UserAccountPage(_userRepository)));
                       }),
                   Divider(),
                   new ListTile(
@@ -45,7 +49,11 @@ class HomePage_Drawer extends StatelessWidget {
                           color: Theme.of(context).primaryColorDark),
                       title: new Text("Order History "),
                       onTap: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=> Oder_History(toolbarname: ' Order History',)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OrderParent(
+                                    userRepository: _userRepository)));
                       }),
                   new Divider(),
                   new ListTile(
@@ -55,13 +63,17 @@ class HomePage_Drawer extends StatelessWidget {
                       onTap: () {
                         // Navigator.push(context, MaterialPageRoute(builder: (context)=> Help_Screen(toolbarname: 'Help',)));
                       }),
-                      Divider(),
-                      new ListTile(
+                  Divider(),
+                  new ListTile(
                       leading: Icon(Icons.headset,
                           color: Theme.of(context).primaryColorDark),
                       title: new Text("Add Product"),
                       onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=> AddProductPage(userRepository: _userRepository)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddProductPage(
+                                    userRepository: _userRepository)));
                       })
                 ],
               ),
@@ -83,7 +95,8 @@ class HomePage_Drawer extends StatelessWidget {
                         new TextStyle(color: Colors.redAccent, fontSize: 17.0),
                   ),
                   onTap: () {
-                   BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
+                    BlocProvider.of<AuthenticationBloc>(context)
+                        .add(LoggedOut());
                   }),
             )
           ],

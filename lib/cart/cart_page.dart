@@ -2,7 +2,7 @@ import 'package:GroceryApp/cart/bloc/cart_event.dart';
 import 'package:GroceryApp/cart/bloc/cart_state.dart';
 import 'package:GroceryApp/data/user_repository.dart';
 import 'package:GroceryApp/home_page/homepage.dart';
-import 'package:GroceryApp/orders/order.dart';
+import 'package:GroceryApp/orders/models/order.dart';
 import 'package:GroceryApp/payment/payment_page.dart';
 import 'package:GroceryApp/products_insertion/models/product.dart';
 import 'package:firebase_image/firebase_image.dart';
@@ -33,11 +33,15 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   CartBloc _cartBloc;
 
-  List<String> getListOfProductId(List<Product> products) {
-    List<String> productIds = new List();
+  List<dynamic> getListOfProductId(List<Product> products, List<int> quantity) {
+    List<Map<String, dynamic>> productIds = new List();
     for (int i = 0; i < products.length; i++) {
       print(products[i].productId);
-      productIds.add(products[i].productId.toString());
+      productIds.add({
+        "product": products[i].productId.toString(),
+        "name": products[i].name,
+        "quantity": quantity[i]
+      });
     }
 
     return productIds;
@@ -162,6 +166,7 @@ class _CartScreenState extends State<CartScreen> {
         if (state is InitCartState) {
           double checkoutAmmount = state.totalPrice + state.serviceCharge;
           List<Product> products = state.products;
+          List<int> quantity = state.cartQuantity;
           return Scaffold(
               bottomNavigationBar: BottomAppBar(
                 child: Container(
@@ -173,20 +178,22 @@ class _CartScreenState extends State<CartScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => PaymentPage(
+                                      userRepository: widget.userRepository,
                                       phoneNo:
                                           "${widget.userRepository.userDetail.getPhoneNo}",
                                       email: widget
                                           .userRepository.userDetail.getEmail,
                                       order: Order(
+                                          paymentId: "",
                                           custormerId: widget
                                               .userRepository.userDetail.getUid,
                                           orderId: "1",
                                           orderDateTime: DateTime.now(),
                                           orderPrice: checkoutAmmount,
-                                          paymentStatus: "pending",
-                                          deliveryStatus: "progress",
-                                          products:
-                                              getListOfProductId(products)),
+                                          paymentStatusCode: 14,
+                                          statusCode: 25,
+                                          products: getListOfProductId(
+                                              products, quantity)),
                                     )));
                       },
                       child: Text(

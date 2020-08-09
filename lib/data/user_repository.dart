@@ -1,4 +1,5 @@
 import 'package:GroceryApp/models/user_detail.dart';
+import 'package:GroceryApp/orders/models/order.dart';
 import 'package:GroceryApp/products_insertion/models/product.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
@@ -69,7 +70,6 @@ class UserRepository {
       userDetail.setUid = value.data['data']['id'];
       userDetail.setEmail = value.data['data']['values']['email'];
       userDetail.setPhoneNo = value.data['data']['values']['phoneNo'];
-      userDetail.setOrders = value.data['data']['values']['orders'];
       userDetail.setFname = value.data['data']['values']['fname'];
       userDetail.setLname = value.data['data']['values']['lname'];
       userDetail.setCart = value.data['data']['values']['cart'];
@@ -298,4 +298,83 @@ class UserRepository {
 
     //------------------------------------------------------------------
   }
+  // Order Update to Database ----------------------------------------
+
+  Future<void> addOrderDetail(Order order) async {
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'updateOrder',
+    );
+    try {
+      return callable.call(
+        <String, dynamic>{
+          'orderId': order.orderId,
+          'orderPrice': order.orderPrice,
+          'statusCode': order.statusCode,
+          'paymentStatusCode': order.paymentStatusCode,
+          'paymentId': order.paymentId,
+          'products': order.products,
+          'custormerId': order.custormerId
+        },
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  //---------------------------------------------------------------
+  Future<void> updateCartOfUser() async {
+    print("update cart in userRepository");
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'updateCart',
+    );
+    await callable.call().then((value) {
+      userDetail.setCart = value.data['data']['values']['cat'];
+    });
+    print(" successfully update cart in userRepository");
+  }
+
+  //--------------------------------------------------------------
+
+  //-----------------------------------------------------------------
+
+  Future<List> getAllOrderDetails() async {
+    print("get all order");
+    final HttpsCallable callable = CloudFunctions.instance.getHttpsCallable(
+      functionName: 'getOrderList',
+    );
+    List<Order> orders = [];
+    // print(
+    // "order length in getallorderdetail ${userDetail.getOrderList.length}");
+    await callable.call().then((value) {
+      print("eeeeee" + value.data.toString());
+      print(DateTime.fromMillisecondsSinceEpoch(value.data['data']['values'][0]
+                  ['orderDateTime']['_seconds'] *
+              1000)
+          .toString());
+      int noe = value.data['data']['values'].length;
+      print(noe);
+      if (noe > 0) {
+        for (int i = 0; i < noe; i++) {
+          // print(value.data['data']['values'][1]['orderPrice']);
+          orders.add(Order(
+            orderId: value.data['data']['values'][i]['orderId'],
+            orderPrice:
+                (value.data['data']['values'][i]['orderPrice']).toDouble(),
+            orderDateTime: new DateTime.fromMillisecondsSinceEpoch(
+                value.data['data']['values'][i]['orderDateTime']['_seconds'] *
+                    1000),
+            statusCode: value.data['data']['values'][i]['statusCode'],
+            products: value.data['data']['values'][i]['products'],
+            paymentId: value.data['data']['values'][i]['paymentId'],
+            paymentStatusCode: value.data['data']['values'][i]
+                ['paymentStatusCode'],
+            custormerId: value.data['data']['values'][i]['custormerId'],
+          ));
+        }
+      }
+    });
+    return orders;
+  }
+
+  //------------------------------------------------------------------
 }

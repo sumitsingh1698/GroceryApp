@@ -1,4 +1,6 @@
-import 'package:GroceryApp/orders/order.dart';
+import 'package:GroceryApp/data/user_repository.dart';
+import 'package:GroceryApp/orders/models/order.dart';
+import 'package:GroceryApp/orders/orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,8 +10,12 @@ class PaymentPage extends StatefulWidget {
   final Order order;
   final String phoneNo;
   final String email;
+  final UserRepository userRepository;
   PaymentPage(
-      {@required this.order, @required this.phoneNo, @required this.email});
+      {@required this.userRepository,
+      @required this.order,
+      @required this.phoneNo,
+      @required this.email});
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -29,6 +35,7 @@ class _PaymentPageState extends State<PaymentPage> {
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    afterSuccessOrder(response.paymentId, 11);
     Fluttertoast.showToast(
         msg: "SUCCESS: " + response.paymentId, timeInSecForIos: 4);
   }
@@ -86,12 +93,47 @@ class _PaymentPageState extends State<PaymentPage> {
         body: Container(
             color: Theme.of(context).primaryColor.withOpacity(0.1),
             child: Center(
-                child: RaisedButton(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
                     onPressed: openCheckout,
                     child: Text("Payment Methods"),
                     textColor: Colors.white,
-                    color: Theme.of(context).primaryColor))),
+                    color: Theme.of(context).primaryColor),
+                RaisedButton(
+                    onPressed: onCashOnDelivery,
+                    child: Text("Cash on Delivery"),
+                    textColor: Colors.white,
+                    color: Theme.of(context).accentColor),
+              ],
+            ))),
       ),
     );
+  }
+
+  void onCashOnDelivery() {
+    afterSuccessOrder("cash", 12);
+  }
+
+  void afterSuccessOrder(String paymentId, int paymentStatusCode) {
+    print("\n\n\n\nandle here\n\n");
+    widget.userRepository
+        .addOrderDetail(Order(
+            custormerId: widget.order.custormerId,
+            orderDateTime: DateTime.now(),
+            orderId: "",
+            orderPrice: widget.order.orderPrice,
+            statusCode: 21,
+            paymentStatusCode: paymentStatusCode,
+            paymentId: paymentId,
+            products: widget.order.products))
+        .then((value) => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          OrderParent(userRepository: widget.userRepository)))
+            });
   }
 }
